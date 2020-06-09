@@ -9,14 +9,16 @@ header{
     display: flex;
     align-item: center;
     justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 h1{
     font-family: Blippo, fantasy;
     font-weight: bolder;
     font-size: 350%;
 }
-.log{
-    
+.logb{
+    padding-top: 6%;
 }
 
 footer{
@@ -33,4 +35,9 @@ section{
 article{
     background-color: rgba(255,255,255,0.8);
     border: solid;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
 }
