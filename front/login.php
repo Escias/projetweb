@@ -7,15 +7,20 @@
 </head>
 <body>
 <?php
-    include 'header.php';
+include 'header.php';
 ?>
 <section>
     <article>
-        <h1>test content</h1>
+        <form method="post" target="_blank">
+            <?php
+                $form = new autoform();
+
+            ?>
+        </form>
     </article>
 </section>
 <?php
-    include 'footer.php';
+include 'footer.php';
 ?>
 </body>
 </html>
