@@ -13,7 +13,7 @@ require '../back/database.php';
 <section>
     <article>
         <h1>Register</h1>
-        <form method="POST" target="_blank">
+        <form method="POST" action="#">
             <?php
             $form = new autoform();
             $req = new request('root', 'root', 'Projetweb', 'mysql', 'localhost');
@@ -24,13 +24,14 @@ require '../back/database.php';
             $form->getInputSubmit('Connection');
             if(!empty($_POST)){
                 if($_POST['1password'] == $_POST['2password']){
-                    $req->getInsert('Profil', array ("'", $_POST['username'],$_POST['mail'], $_POST['1password'] ) );
+                    echo 'theo est baeau';
+                    $req-> Insert('Profil', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'") );
                 }else{
                     echo('Ton mot de passe est incorrect');
                 }
             }
             ?>
-
+            
         </form>
     </article>
 </section>

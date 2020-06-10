@@ -55,18 +55,23 @@ class request
      */
     public function Insert($table, $list)
     {
+
         $count = 0;
         $value = '';
         foreach ($list as $element) {
             $value = $value . $element;
             if ($count < count($list) - 1) {
-                $value = $value . ",";
+                $value = $value.",";
             }
             $count++;
         }
-        $sql = "INSERT INTO ".$table." VALUES (default,".$value." )";
+        echo '<p>';
+        $sql = "INSERT INTO ".$table." VALUES (default,".$value.")";
+        echo $sql;
+        echo '</p>';
         if ($this->_bdd->query($sql)===true) {
             $this->_bdd->query($sql);
+
         }
     }
 
