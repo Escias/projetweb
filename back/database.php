@@ -48,4 +48,33 @@ class request
             die();
         }
     }
+
+    /**
+     * Permet de réaliser une requête Select
+     * et d'afficher chaque enregistrement à l'utilisateur
+     */
+    public function Insert($table, $list)
+    {
+
+        $count = 0;
+        $value = '';
+        foreach ($list as $element) {
+            $value = $value . $element;
+            if ($count < count($list) - 1) {
+                $value = $value.",";
+            }
+            $count++;
+        }
+        echo '<p>';
+        $sql = "INSERT INTO ".$table." VALUES (default,".$value.")";
+        echo $sql;
+        echo '</p>';
+        if ($this->_bdd->query($sql)===true) {
+            $this->_bdd->query($sql);
+
+        }
+    }
+
+
+
 }
