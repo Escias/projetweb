@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
     <title>SteelRoad</title>
 </head>
 <body>
@@ -13,6 +14,7 @@ require '../back/database.php';
 ?>
 <section>
     <article>
+        <div class = "login">
         <h1>Test Log</h1>
         <form method="POST" target="_blank">
             <?php
@@ -25,6 +27,7 @@ require '../back/database.php';
             <p>pas encore inscrit ?</p>
             <a href="/projetweb/front/register.php"><h3>S'inscrire</h3></a>
         </form>
+        </div>
     </article>
 </section>
 <?php
