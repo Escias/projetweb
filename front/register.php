@@ -2,16 +2,19 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
     <title>Register</title>
 </head>
 <body>
 <?php
+include 'header.php';
 require '../back/autoform.php';
 require '../back/database.php';
 ?>
 <section>
     <article>
+        <div class = "register">
         <h1>Register</h1>
         <form method="POST" action="#">
             <?php
@@ -33,7 +36,11 @@ require '../back/database.php';
             ?>
             
         </form>
+        </div>
     </article>
 </section>
+<?php
+    include 'footer.php';
+?>
 </body>
 </html>
