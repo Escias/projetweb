@@ -49,32 +49,90 @@ class request
         }
     }
 
-    /**
-     * Permet de réaliser une requête Select
-     * et d'afficher chaque enregistrement à l'utilisateur
-     */
-    public function Insert($table, $list)
+    public function getColumns($columns, $table)
     {
+        $list = array();
+        $req = " SELECT " . $columns . " FROM " . $table;
+        $tab = $this->_bdd->query($req);
+        foreach ($tab as $row) {
+            array_push($list, $row[$columns]);
+        }
+        return $list;
+    }
 
-        $count = 0;
+    /**
+     * Permet d'effectuer une une requête SELECT all
+     * @param $table nom de la table où effectuer la requête
+     * @param $where
+     * @param $pos colonne de la table à vérifier
+     * @return array retourne une liste contenant les résultats
+     */
+    public function getAllRows($table, $where, $pos){
+        $val = array();
+        if ($where != NULL){
+            $sql = "SELECT * FROM ".$table." WHERE ".$pos."=".$where.";";
+        }else{
+            $sql = "SELECT * FROM ".$table.";";
+        }
+        $this->_bdd->SetAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $tab = $this->_bdd->query($sql);
+        foreach ($tab as $rslt){
+            $val[]=$rslt;
+        }
+        return $val;
+    }
+
+    /**
+     * Permet d'effectuer une une requête SELECT spécifique
+     * @param $table nom de la table où effectuer la requête
+     * @param $list liste contenant le nom des colonnes
+     * @param $where
+     * @param $pos colonne de la table à vérifier
+     * @return array retourne une liste contenant les résultats
+     */
+    public function getRows($table, $list, $where, $pos){
+        $val = array();
+        $count=0;
         $value = '';
-        foreach ($list as $element) {
-            $value = $value . $element;
-            if ($count < count($list) - 1) {
+        foreach($list as $element){
+            $value = $value.$element;
+            if($count<count($list)-1){
                 $value = $value.",";
             }
             $count++;
         }
-        echo '<p>';
-        $sql = "INSERT INTO ".$table." VALUES (default,".$value.")";
-        echo $sql;
-        echo '</p>';
-        if ($this->_bdd->query($sql)===true) {
-            $this->_bdd->query($sql);
-
+        if ($where != NULL){
+            $sql = "SELECT ".$value." FROM ".$table." WHERE ".$pos."=".$where.";";
+        }else{
+            $sql = "SELECT ".$value." FROM ".$table.";";
         }
+        $this->_bdd->SetAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $tab = $this->_bdd->query($sql);
+        foreach ($tab as $rslt){
+            $val[]=$rslt;
+        }
+        return $val;
     }
 
-
-
+    /**
+     * Permet de réaliser une requête INSERT
+     * @param $table nom de la table sur laquelle effectuée le INSERT
+     * @param $list éléments à ajouter
+     */
+    public function Insert($table,$list){
+        $count=0;
+        $value = '';
+        foreach($list as $element){
+            $value = $value.$element;
+            if($count<count($list)-1){
+                $value = $value.",";
+            }
+            $count++;
+        }
+        $sql = "INSERT INTO ".$table." VALUES (default,".$value.")";
+        if ($this->_bdd->query($sql)===true) {
+            $this->_bdd->query($sql);
+        }
+    }
 }
+?>

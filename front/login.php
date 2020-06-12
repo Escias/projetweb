@@ -26,6 +26,7 @@ require '../back/database.php';
             ?>
             <p>pas encore inscrit ?</p>
             <a href="/projetweb/front/register.php"><h3>S'inscrire</h3></a>
+            <a href="/projetweb/front/song.php"><h3>Song</h3></a>
         </form>
         </div>
     </article>
