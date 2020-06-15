@@ -27,8 +27,7 @@ require '../back/database.php';
             $form->getInputSubmit('Connection');
             if(!empty($_POST)){
                 if($_POST['1password'] == $_POST['2password']){
-                    echo 'theo est baeau';
-                    $req-> Insert('Profil', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'") );
+                    $req-> Insert('user_data', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'","default"));
                 }else{
                     echo('Ton mot de passe est incorrect');
                 }

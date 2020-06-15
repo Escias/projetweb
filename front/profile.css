@@ -1,0 +1,4 @@
+.prob{
+    display: flex;
+    flex-direction: column;
+}
