@@ -11,7 +11,7 @@
 include 'header.php';
 require '../back/autoform.php';
 require '../back/database.php';
-require '../back/log.php';
+require '../back/json.php';
 ?>
 <section>
     <article>
@@ -20,14 +20,15 @@ require '../back/log.php';
         <form method="POST" action="#">
             <?php
             $form = new autoform();
-            $req = new request('root', 'root', 'projetweb', 'mysql', 'localhost');
+            $log = new json();
+            $req = new request('root', 'root', 'test', 'mysql', 'localhost');
             $form->getInputText('Username', 'username');
             $form->getInputPassword('Password', 'password');
             $form->getInputSubmit('Connection');
             if (!empty($_POST)){
-                $check = $req->getValue($req->getRows(user_data, array('username', 'password'), "'".$_POST['username']."'", 'username'));
+                $check = $req->getValue($req->getRows('codingmusic_web_users', array('NickName', 'PassWord'), "'".$_POST['username']."'", 'NickName'));
                 if ($check[0]==$_POST['username'] && $check[1]==$_POST['password']){
-                    $log = new log($check[0]);
+                    $log->createJSON('keeplog', array(check[0]));
                     header("../front/index.php");
                     exit;
                 }else{

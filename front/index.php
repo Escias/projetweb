@@ -8,10 +8,19 @@
 <body>
 <?php
     include 'header.php';
+    require '../back/database.php';
 ?>
 <section>
     <article>
-        <h1>test content</h1>
+        <form method="POST" action="#">
+            <?php
+            $req = new request('root', 'root', 'test', 'mysql', 'localhost');
+
+            $check = $req->getValue($req->getRows('Codingmusic_Tracks',array('Link'),"'".'2'."'", 'ID'));
+            $toPlay = str_replace("https://www.youtube.com/watch?v=", "", $check[0]);
+            echo '<iframe src="https://www.youtube.com/embed/'. $toPlay . '" frameborder="0" allowfullscreen></iframe>';
+            ?>
+        </form>
     </article>
 </section>
 <?php

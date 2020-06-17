@@ -19,7 +19,7 @@ require '../back/database.php';
         <form method="POST" action="#">
             <?php
             $form = new autoform();
-            $req = new request('root', 'root', 'Projetweb', 'mysql', 'localhost');
+            $req = new request('root', 'root', 'test', 'mysql', 'localhost');
             $form->getInputText('Username', 'username');
             $form->getInputText('Mail','mail');
             $form->getInputPassword('Password', '1password');
@@ -27,7 +27,7 @@ require '../back/database.php';
             $form->getInputSubmit('Connection');
             if(!empty($_POST)){
                 if($_POST['1password'] == $_POST['2password']){
-                    $req-> Insert('user_data', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'","default"));
+                    $req-> Insert('codingmusic_web_users', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'","default"));
                 }else{
                     echo('Ton mot de passe est incorrect');
                 }
