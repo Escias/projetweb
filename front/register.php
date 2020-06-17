@@ -27,9 +27,15 @@ require '../back/database.php';
             $form->getInputSubmit('Connection');
             if(!empty($_POST)){
                 if($_POST['1password'] == $_POST['2password']){
-                    $req-> Insert('codingmusic_web_users', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'","default"));
+                    if (preg_match("/[aA0-zZ9]{3}\@[aA0-zZ9]{1,}\.[aA-zZ]/", $_POST["mail"])){
+                        $req-> Insert('codingmusic_web_users', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'","default"));
+                        header("../front/login.php");
+                        exit;
+                    }else{
+                        echo '<p>Entrer une adresse mail valide</p>';
+                    }
                 }else{
-                    echo('Ton mot de passe est incorrect');
+                    echo '<p>Ton mot de passe est incorrect</p>';
                 }
             }
             ?>

@@ -28,8 +28,10 @@ require '../back/json.php';
             if (!empty($_POST)){
                 $check = $req->getValue($req->getRows('codingmusic_web_users', array('NickName', 'PassWord'), "'".$_POST['username']."'", 'NickName'));
                 if ($check[0]==$_POST['username'] && $check[1]==$_POST['password']){
-                    $log->createJSON('keeplog', array(check[0]));
-                    header("../front/index.php");
+                    $username = $check[0];
+                    $log->createJSON('keeplog.json', array($username));
+                    echo '<p>'.$username.'</p>';
+                    header("Location: ../front/index.php");
                     exit;
                 }else{
                     echo 'username or password incorrect';

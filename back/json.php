@@ -11,4 +11,14 @@ class json
     public function deleteJSON($name){
         unlink($name);
     }
+
+    public function extractJSON($path){
+        $user = array();
+        $str = file_get_contents($path);
+        $json = json_decode($str,true);
+        foreach ($json as $item){
+            $user = $item;
+        }
+        return $user;
+    }
 }
