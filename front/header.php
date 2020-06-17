@@ -7,7 +7,7 @@
         if (file_exists("keeplog.json")){
             echo "<div class=\"logb\">
                     <a href=\"/projetweb/front/profil.php\" class=\"log\">Profile</a>
-                    
+                    <a href=\"/projetweb/back/test.php?action=dinesh\" class=\"log\">Deconnexion</a>
                 </div>";
         }else{
             echo "<div class=\"logb\">
