@@ -25,6 +25,18 @@
         }
         ?>
     </article>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script language="javascript">
+        $(function(){
+            function loadNum()
+            {
+                $('h1.countdown').load('../back/checkdata.php');
+                console.log("test");
+                setTimeout(loadNum, 1000);
+            }
+            loadNum();
+        });
+    </script>
 </section>
 <?php
     include 'footer.php';
