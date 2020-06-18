@@ -6,13 +6,16 @@
     <title>SteelRoad</title>
 </head>
 <body>
+
 <?php
     include 'header.php';
     require '../back/database.php';
     require '../back/json.php';
 ?>
+
 <section>
     <article>
+        
         <?php
         echo '<h3>CHECK</h3>';
         if (file_exists("keeplog.json")){
