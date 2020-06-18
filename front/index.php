@@ -30,8 +30,13 @@
         $(function(){
             function loadNum()
             {
-                $('h1.countdown').load('../back/checkdata.php');
-                console.log("test");
+                $.ajax({
+                    url : "/projet/back/checkdata.php",
+                    type : "POST",
+                    success : function(response){
+                        console.log(response);
+                    }
+                });
                 setTimeout(loadNum, 1000);
             }
             loadNum();

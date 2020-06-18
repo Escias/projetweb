@@ -4,7 +4,6 @@ body{
 
 header{
     border-bottom: 7px solid;
-    background-image: url("../img/minecraft.jpeg");
 }
 .head{
     display: flex;
