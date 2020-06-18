@@ -145,27 +145,12 @@ class request
         }
     }
 
-    /**
-    * N'est pas appellé pour le moment
-    */
-    public function isUserConnected($nick, $pass){
-        $sql="select NickName, PassWord from codingmusic_web_users WHERE '" . $nick . "' = NickName AND '" . $pass . "' = PassWord limit 1"; 
-
-        $response = array();
-        $posts = array();
-        $result=mysql_query($sql);
-        while($row=mysql_fetch_array($result)) { 
-          $nick=$row['NickName']; 
-          $pass=$row['PassWord'];
-
-          $posts[] = array('NickName'=> $nick, 'PassWord'=> $pass);
-        } 
-
-        $response['posts'] = $posts;
-
-        $fp = fopen('results.json', 'w');
-        fwrite($fp, json_encode($response));
-        fclose($fp);
+    public function getUpdate($table, $value, $column, $colwhere, $where)
+    {
+        $sql = "UPDATE ".$table." SET ".$column." = '".$value."' WHERE ".$colwhere." = '".$where."';";
+        if ($this->_bdd->query($sql)===true) {
+            $this->_bdd->query($sql);
+        }
     }
 }
 ?>

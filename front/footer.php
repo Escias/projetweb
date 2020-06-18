@@ -5,7 +5,7 @@
     </div>
 </footer>
 <script type="text/javascript">
-    function disconnect() {
+    function Disconnect() {
         <?php unlink('keeplog.json'); ?>
     }
 </script>

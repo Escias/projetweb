@@ -10,6 +10,7 @@ class json
 
     public function deleteJSON($name){
         unlink($name);
+        echo "<p>RUN</p>";
     }
 
     public function extractJSON($path){
