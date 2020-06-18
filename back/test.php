@@ -1,9 +1,25 @@
-<?php
+<script type="text/javascript">
+    function disconnect() {
+        <?php unlink('keeplog.json'); ?>
+    }
+</script>
 
-require 'projetweb/back/json.php';
-$json = new json();
-if (isset($_GET['action']) && $_GET['action'] == 'dinesh') {
-    $json->deleteJSON('../front/keeplog.json');
-    header("Location: ../front/index.php");
-    exit;
-}
+<a id='disconnect' href=\"/projetweb/front/index.php\" class=\"log\">Deconnexion</a>";
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script language="javascript">
+    $(function(){
+        function loadNum()
+        {
+            $.ajax({
+                url : "/projet/back/checkdata.php",
+                type : "POST",
+                success : function(response){
+                    console.log(response);
+                }
+            });
+            setTimeout(loadNum, 1000);
+        }
+        loadNum();
+    });
+</script>

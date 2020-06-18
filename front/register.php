@@ -19,12 +19,12 @@ require '../back/database.php';
         <form method="POST" action="#">
             <?php
             $form = new autoform();
-            $req = new request('root', 'root', 'test', 'mysql', 'localhost');
+            $req = new request('minesr_44703', 'TbhV1zzZ', 'test', 'mysql', '178.32.113.35:3306');
             $form->getInputText('Username', 'username');
             $form->getInputText('Mail','mail');
             $form->getInputPassword('Password', '1password');
             $form->getInputPassword('Password', '2password');
-            $form->getInputSubmit('Connection');
+            $form->getInputSubmit('Valider');
             if(!empty($_POST)){
                 if($_POST['1password'] == $_POST['2password']){
                     if (preg_match("/[aA0-zZ9]{3}\@[aA0-zZ9]{1,}\.[aA-zZ]/", $_POST["mail"])){
@@ -35,7 +35,7 @@ require '../back/database.php';
                         echo '<p>Entrer une adresse mail valide</p>';
                     }
                 }else{
-                    echo '<p>Ton mot de passe est incorrect</p>';
+                    echo '<p>Mot de passe est incorrect</p>';
                 }
             }
             ?>
