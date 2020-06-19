@@ -17,6 +17,7 @@ require '../back/database.php';
         <div class = "register">
         <h1>Register</h1>
         <form method="POST" action="#">
+            <!--ask for informations of new user to register-->
             <?php
             $form = new autoform();
             $req = new request('minesr_44703', 'TbhV1zzZ', 'minesr_44703', 'mysql', '178.32.113.35:3306');
@@ -25,8 +26,11 @@ require '../back/database.php';
             $form->getInputPassword('Password', '1password');
             $form->getInputPassword('Password', '2password');
             $form->getInputSubmit('Valider');
+            /*verify if all input*/
             if(!empty($_POST)){
+                /*verify if the 2 passwords is the same*/
                 if($_POST['1password'] == $_POST['2password']){
+                    /*verify format of mail address*/
                     if (preg_match("/[aA0-zZ9]{3}\@[aA0-zZ9]{1,}\.[aA-zZ]/", $_POST["mail"])){
                         $req-> Insert('codingmusic_web_users', array ("'".$_POST['username']."'","'".$_POST['mail']."'","'". $_POST['1password'] ."'","default"));
                         header("../front/login.php");

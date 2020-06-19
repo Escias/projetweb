@@ -3,6 +3,7 @@
         <div>
             <a href="/projetweb/front/index.php"><h1>SteelRoad</h1></a>
         </div>
+        <!--display content according to the existence of keeplog.json-->
         <?php
         if (file_exists("keeplog.json")){
             echo "<div class=\"logb\">
@@ -19,13 +20,20 @@
         ?>
     </div>
     <?php
-    if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction']))
-    {
+    /**
+     * verify action in the form
+     */
+    if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])) {
         func();
     }
+    /**
+     * delete "keeplog.json" and redirect to index page
+     */
     function func()
     {
         unlink("../front/keeplog.json");
+        header("../front/index.php");
+        exit;
     }
     ?>
 </header>

@@ -6,6 +6,7 @@
     <title>SteelRoad</title>
 </head>
 <body>
+<!--include and execute indicated files.-->
 <?php
 require '../back/database.php';
 require '../back/json.php';
@@ -13,6 +14,9 @@ require '../back/json.php';
 ?>
 <section>
     <article>
+        <!--verify if the json file exist-->
+        <!--extract the youtube's link and keep only the video id-->
+        <!--display the video with "iframe"-->
         <?php
         echo '<h3>CHECK</h3>';
         if (file_exists("keeplog.json")){
@@ -31,6 +35,7 @@ require '../back/json.php';
     include 'footer.php';
 ?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--call the "checkdata.php" file every second and display it.-->
 <script language="javascript">
     $(function(){
         function loadNum()
