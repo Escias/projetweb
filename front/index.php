@@ -19,7 +19,7 @@ require '../back/json.php';
         <?php
         echo '<h3>CHECK</h3>';
         if (file_exists("keeplog.json")){
-            $req = new request('root', 'root', 'test', 'mysql', 'localhost');
+            $req = new request('minesr_44703', 'TbhV1zzZ', 'minesr_44703', 'mysql', '178.32.113.35:3306');
             $json = new json();
             $user = $json->extractJSON('../front/keeplog.json');
             $check = $req->getValue($req->getRows('Codingmusic_Tracks',array('Link'),"'".'2'."'", 'ID'));

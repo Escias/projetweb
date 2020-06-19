@@ -1,12 +1,12 @@
 <?php
+require '../back/json.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-//echo "<script> console.log('run') </script>";
 $dbType = 'mysql';
-$dbName = 'test';
-$dbAdress = 'localhost';
-$user = 'root';
-$pwd = 'root';
+$dbName = 'minesr_44703';
+$dbAdress = '178.32.113.35:3306';
+$user = 'minesr_4470';
+$pwd = 'TbhV1zzZ';
 $bdd = null;
 try {
     if ($bdd === null) {
@@ -18,10 +18,12 @@ try {
     echo 'Connexion échouée : ' . $e->getMessage();
     die();
 }
+$json = new json();
+$value = $json->extractJSON('../front/keeplog.json');
 $val = array();
 $count=0;
 $value = '';
-$sql = "SELECT Is_Online FROM codingmusic_ig_users WHERE NickName= 'Rosstail';";
+$sql = "SELECT Is_Online FROM codingmusic_ig_users WHERE NickName= '".$value[0]."';";
 $bdd->SetAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $tab = $bdd->query($sql);
 foreach ($tab as $rslt){

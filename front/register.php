@@ -19,7 +19,7 @@ require '../back/database.php';
         <form method="POST" action="#">
             <?php
             $form = new autoform();
-            $req = new request('minesr_44703', 'TbhV1zzZ', 'test', 'mysql', '178.32.113.35:3306');
+            $req = new request('minesr_44703', 'TbhV1zzZ', 'minesr_44703', 'mysql', '178.32.113.35:3306');
             $form->getInputText('Username', 'username');
             $form->getInputText('Mail','mail');
             $form->getInputPassword('Password', '1password');
