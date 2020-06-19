@@ -12,6 +12,7 @@ require '../back/database.php';
 require '../back/json.php';
     include 'header.php';
 ?>
+
 <section>
     <article>
         <!--verify if the json file exist-->
