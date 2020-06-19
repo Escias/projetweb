@@ -145,6 +145,14 @@ class request
         }
     }
 
+    /**
+     * Met à jours la colonne de la table indiqué
+     * @param $table nom de la table
+     * @param $value contenu à ajouter
+     * @param $column nom de la colonne à modifier
+     * @param $colwhere
+     * @param $where
+     */
     public function getUpdate($table, $value, $column, $colwhere, $where)
     {
         $sql = "UPDATE ".$table." SET ".$column." = '".$value."' WHERE ".$colwhere." = '".$where."';";

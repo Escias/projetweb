@@ -2,12 +2,14 @@
 require '../back/json.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+/*indicate user and ip of the database*/
 $dbType = 'mysql';
 $dbName = 'minesr_44703';
 $dbAdress = '178.32.113.35:3306';
 $user = 'minesr_4470';
 $pwd = 'TbhV1zzZ';
 $bdd = null;
+/*try connection to the database*/
 try {
     if ($bdd === null) {
         $dsn = $dbType . ':dbname=' . $dbName . ';host=' . $dbAdress;
@@ -18,6 +20,7 @@ try {
     echo 'Connexion échouée : ' . $e->getMessage();
     die();
 }
+/*extract content of json file in $value*/
 $json = new json();
 $value = $json->extractJSON('../front/keeplog.json');
 $val = array();

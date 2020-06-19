@@ -18,6 +18,7 @@ require '../back/json.php';
         <div class = "login">
         <h1>Test Log</h1>
         <form method="POST" action="#">
+            <!--ask for informations of actual user to login-->
             <?php
             $form = new autoform();
             $log = new json();
