@@ -16,7 +16,7 @@ require '../back/json.php';
         <?php
         echo '<h3>CHECK</h3>';
         if (file_exists("keeplog.json")){
-            $req = new request('minesr_44703', 'TbhV1zzZ', 'test', 'mysql', '178.32.113.35:3306');
+            $req = new request('root', 'root', 'test', 'mysql', 'localhost');
             $json = new json();
             $user = $json->extractJSON('../front/keeplog.json');
             $check = $req->getValue($req->getRows('Codingmusic_Tracks',array('Link'),"'".'2'."'", 'ID'));
@@ -25,9 +25,21 @@ require '../back/json.php';
         }
         ?>
     </article>
+    <div id="content"></div>
 </section>
 <?php
     include 'footer.php';
 ?>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script language="javascript">
+    $(function(){
+        function loadNum()
+        {
+            $('#content').load('../back/checkdata.php');
+            setTimeout(loadNum, 1000);
+        }
+        loadNum();
+    });
+</script>
 </body>
 </html>

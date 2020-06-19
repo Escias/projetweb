@@ -21,7 +21,7 @@ require '../back/json.php';
             <?php
             $form = new autoform();
             $log = new json();
-            $req = new request('minesr_44703', 'TbhV1zzZ', 'test', 'mysql', '178.32.113.35:3306');
+            $req = new request('root', 'root', 'test', 'mysql', 'localhost');
             $form->getInputText('Username', 'username');
             $form->getInputPassword('Password', 'password');
             $form->getInputSubmit('Connection');
